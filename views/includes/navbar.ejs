@@ -1,12 +1,12 @@
 <style>
   .search-btn{
-    background-color: #fe424d;
+    background-color: #1f19e0;
     color:#fff;
-    border-radius: 25px;
+    border-radius: 15px;
     padding: 0 1rem 0 1rem;
   }
   .search-btn:hover{
-    background-color: #fe424d;
+    background-color: #1c8ef1;
     color:#fff;
   }
   .search-btn i{
@@ -14,15 +14,16 @@
     margin-left: 0.5rem;
   }
   .search-inp{
-    border-radius:25px ;
-    padding: 0.5rem 3rem 0.5rem 3rem;
+    border-radius:15px ;
+    padding: 0.5rem 0rem 0.5rem 2rem;
     font-size: 1rem;
   }
 </style>
 
 <nav class="navbar navbar-expand-md bg-body-tertiary sticky-top boder-bottom">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/listing"><i class="fa-regular fa-compass"></i></a>
+      <a class="navbar-brand" href="/listing"><i class="fa-solid fa-person-burst"></i></i></a>
+      
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -33,8 +34,8 @@
         </div>
 
         <div class="navbar-nav ms-auto">
-          <form action="" class="d-flex" role="search">
-            <input type="search" name="" id="" class="from-control me-2 search-inp" placeholder="Search destination">
+          <form action="/listing/search" method="post" class="d-flex" role="search">
+            <input type="search" name="listing[search]" class="from-control me-2 search-inp" placeholder="Search By location" required>
             <button class="btn search-btn"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
           </form>
 

@@ -11,8 +11,8 @@ body{
 .navbar{
     background-color: white;
 }
-.fa-compass{
-    color: #fe424d;
+.fa-person-burst{
+    color: #1f19e0;
    font-size:35px;
 }
 .nav-link{
@@ -49,10 +49,14 @@ body{
 }
 
 /* card */
+/* .maincard{
+    display: flex;
+    flex-direction: column-reverse;
+} */
 .listingcard{
     border: none !important;
     margin-bottom: 2rem !important;
-
+    padding: 5px;
 }
 .card-img-top{
     border-radius: 1rem !important;

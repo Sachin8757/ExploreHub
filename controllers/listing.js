@@ -11,6 +11,14 @@ module.exports.index=(async(req,res)=>{
     res.render("index.ejs",{listing});
     
 })
+// search
+module.exports.search=(async(req,res)=>{
+    const { value, error } = listingSchema.validate(req.body);
+    const sear = value?.listing?.search;
+    const listing=await Listing.find({ location: { $regex: sear, $options: 'i' } });
+    res.render("search.ejs",{listing});
+})
+
 //new route
 module.exports.renderform=(req,res)=>{
     res.render("new.ejs");

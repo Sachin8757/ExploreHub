@@ -94,7 +94,7 @@
       </div>
     </div>
 
-    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-Sm-1 mt-2">
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-Sm-1 mt-2 maincard">
       <%for(let lis of listing) { %>
         <a href="/listing/<%=lis._id%>" class="listing-link">
           <div class="card col listingcard">
@@ -104,9 +104,10 @@
               <p class="card-text">
                 <b>
                   <%=lis.title %>
+                  <%=lis.location %>
                 </b>
                 <br>
-                &#8377;<%=lis.price.toLocaleString("en-IN")%>/night
+                &#8377;<%=lis.price.toLocaleString("en-IN")%>/day
                   <i class="tax-info">&nbsp;&nbsp;+18% GST</i>
               </p>
             </div>

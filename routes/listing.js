@@ -13,6 +13,8 @@ const upload = multer({storage})
 
 // //listing page
 route.get("/",wrapAsynce(listingController.index))
+// search
+route.post("/search",wrapAsynce(listingController.search))
 // //new route
 route.get("/new",isLoggedIn,wrapAsynce(listingController.renderform))
 
