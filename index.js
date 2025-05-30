@@ -57,7 +57,7 @@ const sessionoption={
 
 // // index route
 app.get("/",async(req,res)=>{
-    res.redirect("/listing")
+   res.redirect("/listing")
     
 })
 app.use(session(sessionoption))
