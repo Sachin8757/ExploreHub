@@ -1,59 +1,134 @@
+<!-- Include Bootstrap and FontAwesome in your <head> -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
 <style>
-  .search-btn{
-    background-color: #1f19e0;
-    color:#fff;
-    border-radius: 15px;
-    padding: 0 1rem 0 1rem;
+  .navbar {
+    background: linear-gradient(135deg, #1f19e0, #1c8ef1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   }
-  .search-btn:hover{
-    background-color: #1c8ef1;
-    color:#fff;
+
+  .navbar-brand {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #fff !important;
+    display: flex;
+    align-items: center;
   }
-  .search-btn i{
-    display: inline;  
+
+  .navbar-brand i {
+    margin-right: 0.5rem;
+    color: #f9d342;
+  }
+
+  .nav-link {
+    color: #fff !important;
+    font-weight: 500;
+    margin: 0 0.5rem;
+    transition: all 0.3s ease;
+  }
+
+  .nav-link:hover {
+    color: #f9d342 !important;
+  }
+
+  .search-container {
+    position: relative;
+  }
+
+  .search-container input[type="search"] {
+    border-radius: 50px;
+    border: none;
+    padding: 0.5rem 2.5rem 0.5rem 2.5rem;
+    width: 220px;
+    max-width: 100%;
+    outline: none;
+    transition: box-shadow 0.3s;
+  }
+
+  .search-container input:focus {
+    box-shadow: 0 0 5px #fff;
+  }
+
+  .search-container i {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    color: #888;
+  }
+
+  .search-btn {
+    background-color: #f9d342;
+    border-radius: 50px;
+    border: none;
+    padding: 0.5rem 1.2rem;
+    font-weight: 600;
     margin-left: 0.5rem;
+    transition: all 0.3s;
+    color: #000;
   }
-  .search-inp{
-    border-radius:15px ;
-    padding: 0.5rem 0rem 0.5rem 2rem;
-    font-size: 1rem;
+
+  .search-btn:hover {
+    background-color: #fff;
+    color: #1f19e0;
+  }
+
+  @media (max-width: 768px) {
+    .search-container input {
+      width: 100%;
+    }
+
+    .search-btn {
+      width: 100%;
+      margin-top: 0.5rem;
+    }
+
+    form.d-flex {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .navbar-nav {
+      text-align: center;
+    }
   }
 </style>
 
-<nav class="navbar navbar-expand-md bg-body-tertiary sticky-top boder-bottom">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/listing"><i class="fa-solid fa-person-burst"></i></i></a>
-      
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-link" href="/listing">ExploreHub</a>
-         
+<nav class="navbar navbar-expand-md sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/listing"><i class="fa-solid fa-location-dot"></i>ExploreHub</a>
+    <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+      <!-- Left Links -->
+      <div class="navbar-nav">
+        <a class="nav-link" href="/listing">Home</a>
+        <a class="nav-link" href="/listing/new">Add Destination</a>
+      </div>
+
+      <!-- Center Search -->
+      <form action="/listing/search" method="post" class="d-flex align-items-center my-2 my-md-0">
+        <div class="search-container">
+          <i class="fa fa-search"></i>
+          <input type="search" name="listing[search]" placeholder="Search by location" required>
         </div>
+        <button class="search-btn" type="submit">Search</button>
+      </form>
 
-        <div class="navbar-nav ms-auto">
-          <form action="/listing/search" method="post" class="d-flex" role="search">
-            <input type="search" name="listing[search]" class="from-control me-2 search-inp" placeholder="Search By location" required>
-            <button class="btn search-btn"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
-          </form>
-
-        </div>
-
-        <div class="navbar-nav ms-auto">
-          <a class="nav-link" href="/listing/new">Add destination</a>
-          <%if(!currUser){%>
-            <a class="nav-link " aria-current="page" href="/signup"><b>signup</b></a>
-            <a class="nav-link" href="/login"><b>Login</b></a>
-          <%}%>
-          <%if(currUser){%>
-            <a class="nav-link" href="/logout"><b>Logout</b></a>
-          <%}%>
-
-          
-        </div>
-        
+      <!-- Right Auth -->
+      <div class="navbar-nav">
+        <% if (!currUser) { %>
+          <a class="nav-link" href="/signup"><i class="fa-solid fa-user-plus"></i> Signup</a>
+          <a class="nav-link" href="/login"><i class="fa-solid fa-right-to-bracket"></i> Login</a>
+        <% } %>
+        <% if (currUser) { %>
+          <a class="nav-link" href="/logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+        <% } %>
       </div>
     </div>
-  </nav>
+  </div>
+</nav>
