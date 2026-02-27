@@ -1,6 +1,6 @@
 # Doubt Section
 
-    1. when i start this project
+    1.
     2.
     3.
     4.
