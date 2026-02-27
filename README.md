@@ -1,3 +1,3 @@
-# ExploreHub
-ExploreHub
- hadkjald
+# ExploreHub 
+     
+     This is our first project with 
