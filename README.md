@@ -8,7 +8,9 @@
      4. You can't Push your code in main branch.
 
 ### This section for us we can write here what next i do like new plain
-
+    If you want to start server first write on console "npx nodemon" or "npm index.js" 
+    than after open any browser like google chrome and write on search tap "http://localhost:3000"
+    
 
 
      

@@ -1,0 +1,33 @@
+{
+  "name": "explorehub",
+  "version": "1.0.0",
+  "description": "1. This is Our first Project with our team member thats'why\r         be serious and be carefull.\r     2. You can ask any type of Doubt in doubt.md file.\r     3. You Must run this command (git pull ) before doing any work\r        and push daily your work without lelling for project manager.\r      4. You can't Push your code in main branch.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sachinkumar-8/ExploreHub.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/sachinkumar-8/ExploreHub/issues"
+  },
+  "homepage": "https://github.com/sachinkumar-8/ExploreHub#readme",
+  "dependencies": {
+    "dotenv": "^16.6.1",
+    "ejs": "^5.0.1",
+    "ejs-mate": "^4.0.0",
+    "express": "^5.2.1",
+    "join": "^3.0.0",
+    "mate": "^0.21.0",
+    "mongoose": "^9.2.4",
+    "path": "^0.12.7",
+    "routes": "^2.1.0",
+    "views": "^1.0.2"
+  }
+}
