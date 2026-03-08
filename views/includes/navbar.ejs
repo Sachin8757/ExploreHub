@@ -1,3 +1,87 @@
-<nav>
-    <h2>Hey i am navbar</h2>
+<style>
+    body{
+  margin:0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:#222;
+  padding:15px 40px;
+}
+
+.logo a{
+  color:white;
+  font-size:22px;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+.nav-links{
+  list-style:none;
+  display:flex;
+  gap:25px;
+}
+
+.nav-links a{
+  text-decoration:none;
+  color:white;
+  font-size:16px;
+}
+
+.nav-links a:hover{
+  color:#00adb5;
+}
+
+.auth a{
+  margin-left:15px;
+  color:white;
+  text-decoration:none;
+  border:1px solid white;
+  padding:5px 10px;
+  border-radius:4px;
+}
+
+.auth a:hover{
+  background:white;
+  color:black;
+}
+
+.link{
+  text-decoration: none;   /* remove underline */
+  border: none;            /* remove border */
+  background: none;        /* remove background */
+  padding: 0;              /* remove extra space */
+}
+
+.icon{
+  font-size:35px;
+  color:white;
+}
+
+</style>
+<nav class="navbar">
+  <div class="logo">
+    <a href="/listing">ExploreHub</a>
+  </div>
+
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/listing">All Listings</a></li>
+    <li><a href="/listing/new">Add Listing</a></li>
+  </ul>
+
+  <div class="auth">
+    <%if(CURRUSER){%>
+          <a href="/listing/user?id=<%=CURRUSER._id%>" class="link">
+              <i class="fa-solid fa-users icon"></i>
+          </a>
+    
+    <%}else{%>
+    <a href="/listing/login">Login</a>
+    <a href="/listing/register">Register</a>
+    <%}%>
+  </div>
 </nav>

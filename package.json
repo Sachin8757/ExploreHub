@@ -19,15 +19,21 @@
   },
   "homepage": "https://github.com/sachinkumar-8/ExploreHub#readme",
   "dependencies": {
+    "bcrypt": "^6.0.0",
+    "connect-mongo": "^6.0.0",
+    "connect-mongoose": "^0.0.2",
     "dotenv": "^16.6.1",
     "ejs": "^5.0.1",
     "ejs-mate": "^4.0.0",
     "express": "^5.2.1",
+    "express-session": "^1.19.0",
     "join": "^3.0.0",
     "mate": "^0.21.0",
     "mongoose": "^9.2.4",
+    "nodemon": "^3.1.14",
     "path": "^0.12.7",
     "routes": "^2.1.0",
+    "session": "^0.1.0",
     "views": "^1.0.2"
   }
 }
