@@ -7,17 +7,13 @@ const isLogin = require("../middleware/islogin.js");
 
 // this is user won route in this route user see about ownself
 app.get("/listing/user",isLogin,async(req,res)=>{
-        const id=req.session.userId;
-        const CURRUSER=await User.findById(id);
         const userId = req.query.id;
         const user=await User.findById(userId)
-        res.render("aboutuser.ejs",{user,CURRUSER})
+        res.render("aboutuser.ejs",{user})
 })
 // this is login part
 app.get('/listing/login',async(req,res)=>{
-    const id=req.session.userId;
-    const CURRUSER=await User.findById(id);
-    res.render("login.ejs",{CURRUSER})
+    res.render("login.ejs")
 })
 app.post("/listing/login", async (req, res) => {
     const { phone, password } = req.body;
@@ -42,9 +38,7 @@ app.post("/listing/login", async (req, res) => {
 
 //this is register part
 app.get('/listing/register',async(req,res)=>{
-        const id=req.session.userId;
-        const CURRUSER=await User.findById(id);
-    res.render("register.ejs",{CURRUSER})
+    res.render("register.ejs")
 })
 app.post("/listing/register", async (req, res) => {
     try {

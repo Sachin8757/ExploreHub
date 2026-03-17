@@ -1,3 +1,39 @@
-<body>
-    
-</body>
+<% layout('./layout/boilerplate.ejs') -%>
+<link rel="stylesheet" href="/stylesheets/listing.css">
+
+<div class="container">
+
+<% lis.forEach(function(listing){ %>
+
+<a href="/listing/details/<%= listing._id %>" class="cardLink">
+
+    <div class="card">
+
+        <div class="imageBox">
+            <img src="<%= listing.image %>" alt="listing">
+        </div>
+
+        <div class="cardContent">
+
+            <div class="titleRow">
+                <h3><%= listing.title %></h3>
+                <span>⭐ 4.5</span>
+            </div>
+
+            <p class="location">
+                <%= listing.location %>, <%= listing.state %>
+            </p>
+
+            <p class="country">
+                <%= listing.country %>
+            </p>
+
+        </div>
+
+    </div>
+
+</a>
+
+<% }) %>
+
+</div>

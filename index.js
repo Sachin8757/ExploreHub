@@ -4,7 +4,7 @@ require("dotenv").config({ quiet: true }); //config .env file for store your sec
 const express=require('express');//require express for backend 
 const app=express(); // call express 
 const connection=require('./models/connection.js')
-const PORT=3000; //this is the port number where our project running
+const PORT=process.env.PORT; //this is the port number where our project running
 const engine = require("ejs-mate"); //require ejs mate 
 const path=require('path') //require path
 const listing=require('./routes/listing.js');//require listing.js file from routes folder
@@ -37,16 +37,25 @@ app.use(
   })
 );
 
+app.use(async (req, res, next) => {
+    const id = req.session.userId;
+
+    if (id) {
+        res.locals.CURRUSER = await User.findById(id);
+    } else {
+        res.locals.CURRUSER = null;
+    }
+    next(); // ✅ VERY IMPORTANT
+});
+
 
 app.use('/',listing)//call all function of listing files
 app.use('/',authentication)//call all function of authentication files
 
 app.get("/",async(req,res)=>{
-    const id=req.session.userId;
-    const CURRUSER=await User.findById(id);
-    res.render("Home.ejs",{CURRUSER}); //this is Home route 
+    res.render("Home.ejs"); //this is Home route 
 })
 
 app.listen(PORT,(req,res)=>{ // this is function which help to run our server on port
-    console.log("server running..."); //this line print our server runnign now on console
+    console.log(`server running on port No ${PORT}...`); //this line print our server runnign now on console
 })
