@@ -4,6 +4,9 @@
 <% layout('./layout/boilerplate.ejs') -%>
 <body>
     <div class="main">
-        <h3>This is our Home page</h3>
+        <%if(CURRUSER){%>
+            
+            <h4><%=CURRUSER.name%></h4>
+        <%}%>
     </div>
 </body>

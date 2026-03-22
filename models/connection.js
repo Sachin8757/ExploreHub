@@ -1,9 +1,9 @@
-const mongoose=require('mongoose');
-const url=process.env.url;
-
-mongoose.connect(url).then(()=>{
-    console.log("DB connected")
-}).catch((error)=>{
-    console.log(error)
+const mongoose = require("mongoose");
+const url=process.env.DBURL;
+mongoose.connect(url)
+.then(()=>{
+    console.log("DB connected");
 })
-module.exports=mongoose
+.catch((err)=>{
+    console.log(err);
+});

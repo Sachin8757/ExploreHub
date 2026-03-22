@@ -1,3 +1,93 @@
+<style>
+  /* Make footer always at bottom */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+footer {
+  margin-top: auto;
+  background-color: #f7f7f7;
+  border-top: 1px solid #ddd;
+  padding: 1rem 0;
+}
+
+/* Footer container */
+.f-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 90%;
+  margin: auto;
+  gap: 1rem;
+}
+
+/* Social icons */
+.f-info-socials i {
+  font-size: 1.5rem;
+  margin-right: 10px;
+  color: #555;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.f-info-socials i:hover {
+  color: #ff385c; /* Airbnb red */
+  transform: scale(1.2);
+}
+
+/* Brand text */
+.f-info-brand {
+  font-size: 0.95rem;
+  color: #444;
+}
+
+/* Links */
+.f-info-links a {
+  margin-left: 15px;
+  text-decoration: none;
+  color: #444;
+  font-size: 0.9rem;
+}
+
+.f-info-links a:hover {
+  text-decoration: underline;
+  color: #ff385c;
+}
+
+@media (max-width: 600px) {
+  .f-info {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .f-info-links a {
+    margin: 0 10px;
+  }
+
+  .f-info-socials {
+    margin-bottom: 5px;
+  }
+}
+
+</style>
 <footer>
-    <h2>Hey i am footer</h2>
+  <div class="f-info">
+    <div class="f-info-socials">
+      <i class="fa-brands fa-square-facebook"></i>
+      <i class="fa-brands fa-square-instagram"></i>
+      <i class="fa-brands fa-linkedin"></i>
+    </div>
+
+    <div class="f-info-brand">
+      &copy; ExploreHub Private Limited
+    </div>
+
+    <div class="f-info-links">
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+    </div>
+  </div>
 </footer>

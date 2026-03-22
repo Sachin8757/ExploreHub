@@ -1,0 +1,9 @@
+<% layout('./layout/boilerplate.ejs') -%>
+<body>
+    <div class="main">
+        <%if(user){%>
+            <h1>Hey!<%=user.name%> </h1>
+            <h4><%=user.phone%></h4>
+        <%}%>
+    </div>
+</body>

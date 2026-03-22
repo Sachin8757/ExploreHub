@@ -1,0 +1,97 @@
+<% layout('./layout/boilerplate.ejs') -%>
+<link rel="stylesheet" href="/stylesheets/register.css">
+
+<div class="main">
+  <div class="card">
+
+    <!-- Top Icon -->
+    <div class="icon-box">
+      <span>→</span>
+    </div>
+
+    <h2>Create Account</h2>
+    <p class="subtitle">Join us and start your journey 🚀</p>
+
+<form action="/listing/register" method="post" id="registerForm">
+
+  <!-- Name -->
+  <div class="input-box">
+    <i class="fa-solid fa-user"></i>
+    <input type="text" name="name" placeholder="Full Name" required>
+  </div>
+
+  <!-- Phone -->
+  <div class="input-box">
+    <i class="fa-solid fa-phone"></i>
+    <input type="text" name="phone" placeholder="Phone" required>
+  </div>
+
+  <!-- Password -->
+  <div class="input-box">
+    <i class="fa-solid fa-lock"></i>
+    <input type="password" id="password" name="password" placeholder="Password" required>
+    <i class="fa-solid fa-eye eye"></i>
+  </div>
+
+  <!-- Confirm Password -->
+  <div class="input-box">
+    <i class="fa-solid fa-lock"></i>
+    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
+  </div>
+
+  <!-- Error Message -->
+  <p id="error-msg" style="color:red; font-size:12px; display:none;">
+    Passwords do not match ❌
+  </p>
+
+  <button class="btnn">Register</button>
+</form>
+
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const form = document.getElementById("registerForm");
+  const password = document.getElementById("password");
+  const confirmPassword = document.getElementById("confirmPassword");
+  const errorMsg = document.getElementById("error-msg");
+  const eyes = document.querySelectorAll(".eye");
+
+  // 👁️ Toggle Password
+  eyes.forEach((eye) => {
+    eye.addEventListener("click", () => {
+      const input = eye.previousElementSibling;
+
+      if (input.type === "password") {
+        input.type = "text";
+        eye.classList.replace("fa-eye", "fa-eye-slash");
+      } else {
+        input.type = "password";
+        eye.classList.replace("fa-eye-slash", "fa-eye");
+      }
+    });
+  });
+
+  // 🔥 Form Validation
+  form.addEventListener("submit", (e) => {
+    if (password.value !== confirmPassword.value) {
+      e.preventDefault();
+      errorMsg.style.display = "block";
+    } else {
+      errorMsg.style.display = "none";
+    }
+  });
+
+  // ✅ Live check while typing
+  confirmPassword.addEventListener("input", () => {
+    if (password.value !== confirmPassword.value) {
+      errorMsg.style.display = "block";
+    } else {
+      errorMsg.style.display = "none";
+    }
+  });
+
+});
+</script>
