@@ -1,87 +1,146 @@
+
 <style>
-    body{
-  margin:0;
-  font-family: Arial, Helvetica, sans-serif;
+  /* Navbar */
+.navbar {
+  padding: 10px 20px;
+  background: white !important;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
-.navbar{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  background:#222;
-  padding:15px 40px;
+/* Logo */
+.navbar-brand {
+  font-size: 22px;
+  color: #ff385c !important; /* Airbnb style */
 }
 
-.logo a{
-  color:white;
-  font-size:22px;
-  text-decoration:none;
-  font-weight:bold;
+/* Links */
+.nav-link {
+  font-size: 15px;
+  margin-right: 10px;
+  color: #333 !important;
+  transition: 0.3s;
 }
 
-.nav-links{
-  list-style:none;
-  display:flex;
-  gap:25px;
+.nav-link:hover {
+  color: #ff385c !important;
 }
 
-.nav-links a{
-  text-decoration:none;
-  color:white;
-  font-size:16px;
+/* Search Box */
+.search-inp {
+  border-radius: 25px;
+  padding: 8px 15px;
+  border: 1px solid #ddd;
+  width: 200px;
+  transition: 0.3s;
 }
 
-.nav-links a:hover{
-  color:#00adb5;
+.search-inp:focus {
+  outline: none;
+  border-color: #ff385c;
+  box-shadow: 0 0 5px rgba(255,56,92,0.3);
 }
 
-.auth a{
-  margin-left:15px;
-  color:white;
-  text-decoration:none;
-  border:1px solid white;
-  padding:5px 10px;
-  border-radius:4px;
+/* Search Button */
+.search-btn {
+  border-radius: 25px;
+  background: #ff385c;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  margin-left: 5px;
+  transition: 0.3s;
 }
 
-.auth a:hover{
-  background:white;
-  color:black;
+.search-btn:hover {
+  background: #e03150;
 }
 
-.link{
-  text-decoration: none;   /* remove underline */
-  border: none;            /* remove border */
-  background: none;        /* remove background */
-  padding: 0;              /* remove extra space */
+/* User icon */
+.navbar .fa-user {
+  font-size: 18px;
 }
 
-.icon{
-  font-size:35px;
-  color:white;
+.navbar-brand i {
+  font-size: 1.8rem;
+  color: #ff385c; /* Airbnb red vibe */
 }
 
+/* ------------------ 📱 MOBILE ------------------ */
+@media (max-width: 768px) {
+
+  .navbar {
+    padding: 10px;
+  }
+
+  .search-inp {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .search-btn {
+    width: 100%;
+  }
+
+  form.d-flex {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .navbar-nav {
+    margin-top: 10px;
+  }
+
+  .nav-link {
+    padding: 8px 0;
+  }
+}
+
+
+/* ------------------ 📲 SMALL MOBILE ------------------ */
+@media (max-width: 480px) {
+  .navbar-brand {
+    font-size: 18px;
+  }
+
+  .search-btn {
+    font-size: 14px;
+  }
+}
 </style>
-<nav class="navbar">
-  <div class="logo">
-    <a href="/">ExploreHub</a>
-  </div>
+<nav class="navbar navbar-expand-md bg-body-tertiary sticky-top boder-bottom">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/listing"> <i class="fa-solid fa-earth-americas"></i></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link" href="/listing">Explore</a>
+         
+        </div>
 
-  <ul class="nav-links">
-    <li><a href="/">Home</a></li>
-    <li><a href="/listing">All Listings</a></li>
-    <li><a href="/listing/new">Add Listing</a></li>
-  </ul>
+        <div class="navbar-nav ms-auto">
+          <form action="" class="d-flex" role="search">
+            <input type="search" name="" id="" class="from-control me-2 search-inp" placeholder="Search destination">
+            <button class="btn search-btn"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
+          </form>
 
-  <div class="auth">
-    <%if(CURRUSER){%>
-          <a href="/listing/user?id=<%=CURRUSER._id%>" class="link">
-              <i class="fa-solid fa-users icon"></i>
-          </a>
-    
-    <%}else{%>
-    <a href="/listing/login">Login</a>
-    <a href="/listing/register">Register</a>
-    <%}%>
-  </div>
-</nav>
+        </div>
+
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link" href="/listing"><b>All places</b></a>
+          <a class="nav-link" href="/listing/new"><b>Add new place</b></a>
+          <%if(!CURRUSER){%>
+            <a class="nav-link " aria-current="page" href="/listing/register"><b>signup</b></a>
+            <a class="nav-link" href="/listing/login"><b>Login</b></a>
+          <%}%>
+          <%if(CURRUSER){%>
+            <a class="nav-link" href="/listing/user?id=<%= CURRUSER._id %>"><i class="fa-solid fa-user"></i></a>
+          <%}%>
+
+          
+        </div>
+        
+      </div>
+    </div>
+  </nav>

@@ -1,131 +1,93 @@
-<!-- <style>
-
-    .footer{
-  background:#222;
-  color:white;
-  margin-top:40px;
-}
-html, body {
-  height: 100%;
-  margin: 0;
-}
-
-body {
-  display: flex;
-  flex-direction: column;
-}
-
-main {
-  flex: 1;
-}
-
-.footer-container{
-  display:flex;
-  justify-content:space-between;
-  padding:40px;
-  flex-wrap:wrap;
-}
-
-.footer-container h4{
-  margin-bottom:10px;
-}
-
-.footer-links a,
-.footer-social a{
-  display:block;
-  text-decoration:none;
-  color:#ccc;
-  margin-bottom:6px;
-}
-
-.footer-links a:hover,
-.footer-social a:hover{
-  color:white;
-}
-
-.footer-bottom{
-  text-align:center;
-  border-top:1px solid #444;
-  padding:10px;
-  font-size:14px;
-}
-</style> -->
-
-
 <style>
-
-    html, body {
-  height: 100%;
-  margin: 0;
-}
-
+  /* Make footer always at bottom */
 body {
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 }
 
-main {
-  flex: 1;
-}
-    .footer{
-  background:#222;
-  color:white;
-  padding:10px 20px;
+footer {
+  margin-top: auto;
+  background-color: #f7f7f7;
+  border-top: 1px solid #ddd;
+  padding: 1rem 0;
 }
 
-.footer-container{
-  display:flex;
-  justify-content:space-between;
-  padding:10px 0;
+/* Footer container */
+.f-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 90%;
+  margin: auto;
+  gap: 1rem;
 }
 
-.footer-container h3,
-.footer-container h4{
-  margin:0;
-  font-size:16px;
+/* Social icons */
+.f-info-socials i {
+  font-size: 1.5rem;
+  margin-right: 10px;
+  color: #555;
+  transition: 0.3s;
+  cursor: pointer;
 }
 
-.footer-links a,
-.footer-social a{
-  display:block;
-  text-decoration:none;
-  color:#ccc;
-  font-size:13px;
-  margin:2px 0;
+.f-info-socials i:hover {
+  color: #ff385c; /* Airbnb red */
+  transform: scale(1.2);
 }
 
-.footer-bottom{
-  text-align:center;
-  border-top:1px solid #444;
-  padding:5px;
-  font-size:12px;
+/* Brand text */
+.f-info-brand {
+  font-size: 0.95rem;
+  color: #444;
 }
+
+/* Links */
+.f-info-links a {
+  margin-left: 15px;
+  text-decoration: none;
+  color: #444;
+  font-size: 0.9rem;
+}
+
+.f-info-links a:hover {
+  text-decoration: underline;
+  color: #ff385c;
+}
+
+@media (max-width: 600px) {
+  .f-info {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .f-info-links a {
+    margin: 0 10px;
+  }
+
+  .f-info-socials {
+    margin-bottom: 5px;
+  }
+}
+
 </style>
-<footer class="footer">
-  <div class="footer-container">
-
-    <div class="footer-brand">
-      <h3>ExploreHub</h3>
-      <p>Discover amazing places around the world.</p>
+<footer>
+  <div class="f-info">
+    <div class="f-info-socials">
+      <i class="fa-brands fa-square-facebook"></i>
+      <i class="fa-brands fa-square-instagram"></i>
+      <i class="fa-brands fa-linkedin"></i>
     </div>
 
-    <div class="footer-links">
-      <h4>Quick Links</h4>
-      <a href="/listing">Home</a>
-      <a href="/listing/new">Add Listing</a>
-      <a href="/listing/login">Login</a>
+    <div class="f-info-brand">
+      &copy; ExploreHub Private Limited
     </div>
 
-    <div class="footer-social">
-      <h4>Follow Us</h4>
-      <a href="#">Facebook</a>
-      <a href="#">Instagram</a>
-      <a href="#">Twitter</a>
+    <div class="f-info-links">
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
     </div>
-
-  </div>
-
-  <div class="footer-bottom">
-    <p>© 2026 ExploreHub | All Rights Reserved</p>
   </div>
 </footer>

@@ -6,11 +6,11 @@ const User=require("../models/user.js"); //requre user schema for login and regi
 const isLogin = require("../middleware/islogin.js");
 
 // this is user won route in this route user see about ownself
-app.get("/listing/user",isLogin,async(req,res)=>{
-        const userId = req.query.id;
-        const user=await User.findById(userId)
-        res.render("aboutuser.ejs",{user})
-})
+app.get("/listing/user", isLogin, async (req, res) => {
+    const userId = req.query.id;   // ✅ query param
+    const user = await User.findById(userId);
+    res.render("aboutuser.ejs", { user });
+});
 // this is login part
 app.get('/listing/login',async(req,res)=>{
     res.render("login.ejs")
@@ -28,7 +28,6 @@ app.post("/listing/login", async (req, res) => {
     if (!isMatch) {
         return res.send("Wrong password");
     }
-
     // login success
     req.session.userId = user._id;  // ✅ session created
     req.session.name = user.name;   

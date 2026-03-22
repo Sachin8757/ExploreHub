@@ -10,6 +10,17 @@ body {
   background: linear-gradient(135deg, #c3ecf7, #f5f7fa);
 }
 
+.bottom-text {
+  margin-top: 15px;
+  font-size: 13px;
+}
+
+.bottom-text a {
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+}
+
 /* Main container */
 .main {
   min-height: 100vh;

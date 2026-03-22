@@ -39,7 +39,6 @@ app.use(
 
 app.use(async (req, res, next) => {
     const id = req.session.userId;
-
     if (id) {
         res.locals.CURRUSER = await User.findById(id);
     } else {
