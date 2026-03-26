@@ -1,9 +1,84 @@
 <% layout('./layout/boilerplate.ejs') -%>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/stylesheets/aboutuser.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <body>
-    <div class="main">
-        <%if(user){%>
-            <h1>Hey!<%=user.name%> </h1>
-            <h4><%=user.phone%></h4>
-        <%}%>
+
+  <!-- 🔹 User Info -->
+<div class="profile-header">
+  <div class="profile-card">
+    
+    <i class="fa-solid fa-user profile-icon"></i>
+
+    <h2><%= user.name %></h2>
+    <p><%= user.phone %></p>
+
+    <p class="listing-count">
+      <%= listings.length %> Posts
+    </p>
+
+    <!-- 🔘 Actions -->
+    <div class="profile-actions">
+        <% if (CURRUSER && CURRUSER.id == user._id.toString()) { %>
+        <!-- buttons -->
+        <!-- Logout -->
+        <form action="/listing/logout" method="get">
+            <button class="btn logout-btn">
+                <i class="fa-solid fa-right-from-bracket"></i> Logout
+            </button>
+        </form>
+        
+        <!-- Delete Account -->
+        <form 
+        action="/listing/<%= user._id %>?_method=DELETE" 
+        method="POST"
+        onsubmit="return confirm('Are you sure you want to delete your Post?')"
+        >
+        <button class="btn delete-btn">
+            <i class="fa-solid fa-trash"></i> Delete Posts
+        </button>
+      </form>
+        <form 
+        action="/user/<%= user._id %>?_method=DELETE" 
+        method="POST"
+        onsubmit="return confirm('Are you sure you want to delete your account?')"
+        >
+        <button class="btn delete-btn">
+            <i class="fa-solid fa-trash"></i> Delete Account
+        </button>
+      </form>
+      <% } %>
+
     </div>
+
+  </div>
+</div>
+  <!-- 🔹 Listings Section -->
+  <div class="section">
+    <h2>User Listings</h2>
+
+    <% if(listings.length === 0){ %>
+      <p class="no-data">No listings uploaded yet</p>
+    <% } %>
+
+    <div class="listing-container">
+      <% listings.forEach(listing => { %>
+
+        <div class="card">
+          <img src="<%= listing.image %>" alt="listing">
+
+          <div class="card-body">
+            <h3><%= listing.title %></h3>
+            <p class="location">
+              <i class="fa-solid fa-location-dot"></i>
+              <%= listing.location %>, <%= listing.state %>
+            </p>
+            <a href="/listing/details/<%= listing._id %>" class="view-btn">View</a>
+          </div>
+        </div>
+
+      <% }) %>
+    </div>
+  </div>
+
 </body>

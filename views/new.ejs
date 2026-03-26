@@ -1,23 +1,46 @@
+<% layout("/layout/boilerplate") %>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-        <div class="main">
-            <div class="box">
-                <form action="/upload" method="POST" enctype="multipart/form-data">
-                    <input type="text" name="title" placeholder="Title" required>
-                    <input type="file" name="image">
-                    <input type="text" name="location" placeholder="Location" required>
-                    <input type="text" name="state" placeholder="State" required>
-                    <input type="text" name="country" placeholder="Country" required>
-                    <button type="submit">Upload</button>
-                </form>
-            </div>
+<div class="row mt-4">
+  <div class="col-8 offset-2">
+    <h2 class="mb-4">Add New Place</h2>
+
+    <form action="/listing/new" method="POST" enctype="multipart/form-data">
+
+      <!-- Title -->
+      <div class="mb-3">
+        <label class="form-label">Title</label>
+        <input type="text" name="title" class="form-control" required>
+        <div class="invalid-feedback">Please enter title</div>
+      </div>
+      <!-- Image -->
+      <div class="mb-3">
+        <label class="form-label">Upload Image</label>
+        <input type="file" name="image" class="form-control">
+      </div>
+
+      <!-- Country & District -->
+      <div class="row">
+        <div class="mb-3 col-md-6">
+          <label class="form-label">Country</label>
+          <input type="text" name="country" class="form-control" required>
+          <div class="invalid-feedback">Enter country</div>
         </div>
-</body>
-</html>
+
+        <div class="mb-3 col-md-6">
+          <label class="form-label">State</label>
+          <input type="text" name="state" class="form-control" required>
+          <div class="invalid-feedback">Enter State</div>
+        </div>
+      </div>
+
+      <!-- Location -->
+      <div class="mb-3">
+        <label class="form-label">Location</label>
+        <input type="text" name="location" class="form-control" required>
+        <div class="invalid-feedback">Enter location</div>
+      </div>
+
+      <button class="btn btn-dark">Add Place</button>
+    </form>
+  </div>
+</div>

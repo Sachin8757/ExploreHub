@@ -1,5 +1,5 @@
 <% layout('./layout/boilerplate.ejs') -%>
-<link rel="stylesheet" href="/stylesheets/listing.css">
+<link rel="stylesheet" href="/stylesheets/index.css">
 
 <div class="container">
 
@@ -17,11 +17,14 @@
 
             <div class="titleRow">
                 <h3><%= listing.title %></h3>
-                <span>⭐ 4.5</span>
+                <span>⭐ <%= listing.reviews.length > 0
+                    ? (listing.reviews.reduce((acc, r) => acc + r.rating, 0) / listing.reviews.length).toFixed(1)
+                    : "No ratings yet" %>
+                </span>
             </div>
 
             <p class="location">
-                <%= listing.location %>, <%= listing.state %>
+                <%= listing.location %>,
             </p>
 
             <p class="country">

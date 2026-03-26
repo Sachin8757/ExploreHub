@@ -9,10 +9,12 @@ const userschema=new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },
-    rating:[{
-        rate:Number,
-        comment:String,
-    }]
+    reviews: [
+    {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Review"
+    }
+    ]
 })
 
 const Listing=mongoose.model("Listing",userschema);

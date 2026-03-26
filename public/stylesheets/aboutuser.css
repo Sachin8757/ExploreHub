@@ -1,0 +1,215 @@
+/* 🔹 Reset + Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f6f7fb;
+    color: #333;
+}
+
+/* 🔹 Profile Header */
+.profile-header {
+    /* background: linear-gradient(135deg, #ff385c, #ff7a7a); */
+    padding: 50px 20px;
+    text-align: center;
+}
+
+/* 🔹 Profile Card */
+.profile-card {
+    background: #fff;
+    padding: 25px 20px;
+    border-radius: 16px;
+    max-width: 360px;
+    margin: auto;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+.profile-card:hover {
+    transform: translateY(-4px);
+}
+
+.profile-icon {
+    font-size: 55px;
+    color: #ff385c;
+    margin-bottom: 10px;
+}
+
+.profile-card h2 {
+    margin-bottom: 5px;
+}
+
+.profile-card p {
+    color: #666;
+    font-size: 14px;
+}
+
+.listing-count {
+    margin-top: 12px;
+    font-weight: 600;
+    color: #ff385c;
+}
+
+/* 🔹 Buttons Section */
+.profile-actions {
+    margin-top: 18px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* 🔹 Button Base */
+.btn {
+    border: none;
+    padding: 9px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+}
+
+/* Logout */
+.logout-btn {
+    background: #555;
+}
+
+.logout-btn:hover {
+    background: #222;
+    transform: scale(1.05);
+}
+
+/* Delete */
+.delete-btn {
+    background: #ff4d4d;
+}
+
+.delete-btn:hover {
+    background: #cc0000;
+    transform: scale(1.05);
+}
+
+/* 🔹 Section */
+.section {
+    padding: 30px 20px;
+}
+
+.section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 22px;
+}
+
+/* 🔹 Grid Layout */
+.listing-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* 🔹 Card */
+.card {
+    background: #fff;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+
+/* 🔹 Image */
+.card img {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+}
+
+/* 🔹 Card Body */
+.card-body {
+    padding: 15px;
+}
+
+.card-body h3 {
+    margin-bottom: 8px;
+    font-size: 18px;
+}
+
+/* 🔹 Location */
+.location {
+    font-size: 13px;
+    color: #777;
+    margin-bottom: 8px;
+}
+
+/* 🔹 Price */
+.price {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* 🔹 View Button */
+.view-btn {
+    display: inline-block;
+    background: #ff385c;
+    color: white;
+    padding: 7px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.view-btn:hover {
+    background: #e03150;
+}
+
+/* ❌ No data */
+.no-data {
+    text-align: center;
+    color: #888;
+    margin-top: 20px;
+}
+
+/* 📱 Mobile */
+@media (max-width: 600px) {
+
+    .profile-card {
+        width: 90%;
+    }
+
+    .profile-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn {
+        width: 85%;
+        justify-content: center;
+    }
+
+    .card img {
+        height: 150px;
+    }
+}
+
+/* 📱 Tablet */
+@media (max-width: 900px) {
+    .listing-container {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}

@@ -1,0 +1,42 @@
+<% layout('./layout/boilerplate.ejs') -%>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/stylesheets/search.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<body>
+
+  <!-- 🔍 Heading -->
+  <div class="search-header">
+    <h2>Search Results</h2>
+    <p>Showing results for "<%= query %>"</p>
+  </div>
+
+  <!-- ❌ No results -->
+  <% if(listings.length === 0){ %>
+    <div class="no-results">
+      <i class="fa-solid fa-face-sad-tear"></i>
+      <p>No listings found</p>
+    </div>
+  <% } %>
+
+  <!-- ✅ Listings Grid -->
+  <div class="listing-container">
+    <% listings.forEach(listing => { %>
+
+      <div class="card">
+        <img src="<%= listing.image %>" alt="listing image">
+
+        <div class="card-body">
+          <h3><%= listing.title %></h3>
+
+          <p class="location">
+            <i class="fa-solid fa-location-dot"></i>
+            <%= listing.location %>, <%= listing.state %>, <%= listing.country %>
+          </p>
+          <a href="/listing/details/<%= listing._id %>" class="view-btn">View Details</a>
+        </div>
+      </div>
+
+    <% }) %>
+  </div>
+
+</body>

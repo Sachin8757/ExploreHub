@@ -109,7 +109,7 @@
 </style>
 <nav class="navbar navbar-expand-md bg-body-tertiary sticky-top boder-bottom">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/listing"> <i class="fa-solid fa-earth-americas"></i></a>
+      <a class="navbar-brand" href="/"> <i class="fa-solid fa-earth-americas"></i></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -120,10 +120,17 @@
         </div>
 
         <div class="navbar-nav ms-auto">
-          <form action="" class="d-flex" role="search">
-            <input type="search" name="" id="" class="from-control me-2 search-inp" placeholder="Search destination">
-            <button class="btn search-btn"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
-          </form>
+              <form action="/listing/search" method="GET" class="d-flex" role="search">
+                <input 
+                  type="search" 
+                  name="query" 
+                  class="form-control me-2 search-inp" 
+                  placeholder="Search Location" required>
+                  
+                <button class="btn search-btn">
+                  <i class="fa-solid fa-magnifying-glass"></i> Search
+                </button>
+              </form>
 
         </div>
 
@@ -135,7 +142,7 @@
             <a class="nav-link" href="/listing/login"><b>Login</b></a>
           <%}%>
           <%if(CURRUSER){%>
-            <a class="nav-link" href="/listing/user?id=<%= CURRUSER._id %>"><i class="fa-solid fa-user"></i></a>
+            <a class="nav-link" href="/listing/user/<%= CURRUSER._id %>"><i class="fa-solid fa-user"></i></a>
           <%}%>
 
           

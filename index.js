@@ -9,10 +9,12 @@ const engine = require("ejs-mate"); //require ejs mate
 const path=require('path') //require path
 const listing=require('./routes/listing.js');//require listing.js file from routes folder
 const authentication=require('./routes/authentication.js'); // require authentication.js file from routes folder
+const review=require('./routes/review.js'); // require review.js file from routes folder
 const User=require("./models/user.js")
 //this is some authentication requirement 
 const MongoStore = require("connect-mongo").default;
 const session = require("express-session");
+
 const bcrypt = require("bcrypt");
 
 //########### These all are middleware #######################
@@ -37,6 +39,7 @@ app.use(
   })
 );
 
+
 app.use(async (req, res, next) => {
     const id = req.session.userId;
     if (id) {
@@ -50,9 +53,11 @@ app.use(async (req, res, next) => {
 
 app.use('/',listing)//call all function of listing files
 app.use('/',authentication)//call all function of authentication files
+app.use('/',review)//call all function of review  files
 
 app.get("/",async(req,res)=>{
-    res.render("Home.ejs"); //this is Home route 
+    // res.render("Home.ejs"); //this is Home route
+    res.redirect("/listing") 
 })
 
 app.listen(PORT,(req,res)=>{ // this is function which help to run our server on port

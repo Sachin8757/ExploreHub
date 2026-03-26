@@ -1,0 +1,105 @@
+
+    /* 🔹 General */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f8f8f8;
+}
+
+/* 🔹 Header */
+.search-header {
+    text-align: center;
+    padding: 20px;
+}
+
+.search-header h2 {
+    margin-bottom: 5px;
+}
+
+.search-header p {
+    color: gray;
+}
+
+/* 🔹 No results */
+.no-results {
+    text-align: center;
+    margin-top: 50px;
+    color: gray;
+}
+
+.no-results i {
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+/* 🔹 Grid Layout */
+.listing-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+/* 🔹 Card */
+.card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* 🔹 Image */
+.card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+/* 🔹 Card Body */
+.card-body {
+    padding: 15px;
+}
+
+.card-body h3 {
+    margin: 0 0 10px;
+}
+
+/* 🔹 Location */
+.location {
+    font-size: 14px;
+    color: gray;
+    margin-bottom: 10px;
+}
+
+/* 🔹 Button */
+.view-btn {
+    text-decoration: none;
+    display: inline-block;
+    background-color: #ff385c;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 20px;
+}
+
+.view-btn:hover {
+    background-color: #e03150;
+}
+
+/* 📱 Mobile */
+@media (max-width: 600px) {
+    .card img {
+        height: 150px;
+    }
+}
+
+/* 📱 Tablet */
+@media (max-width: 900px) {
+    .listing-container {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
