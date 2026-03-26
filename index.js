@@ -27,7 +27,7 @@ app.use(express.urlencoded({ extended: true }));
 //################## This is Sesstion Middleware ###########
 app.use(
   session({
-    secret: process.env.SECRET,
+    secret: process.env.secret,
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({
