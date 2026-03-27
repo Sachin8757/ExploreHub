@@ -1,0 +1,307 @@
+/* GLOBAL */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #fdfbfb, #ebedee);
+}
+
+/* HERO */
+.hero {
+  height: 70vh;
+  width: 90%;
+  max-width: 1200px;
+  margin: 20px auto;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  padding: 20px;
+}
+
+.hero h1 {
+  font-size: 3rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  max-width: 600px;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+}
+
+.hero h1, .hero p {
+  position: relative;
+  z-index: 2;
+}
+
+/* CATEGORIES */
+.categories {
+  padding: 40px 20px;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.category-card {
+  background: white;
+  padding: 15px 20px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* SLIDER */
+.slider {
+  max-width: 650px;
+  width: 90%;
+  margin: 40px auto;
+  overflow: hidden;
+  position: relative;
+}
+
+.slides {
+  display: flex;
+  transition: 0.5s;
+}
+
+.slide {
+  min-width: 100%;
+}
+
+.listing-card {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.listing-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.listing-info {
+  padding: 15px;
+}
+
+/* BUTTONS */
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.6);
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+/* DOTS */
+.dots {
+  text-align: center;
+}
+
+.dot {
+  height: 10px;
+  width: 10px;
+  margin: 5px;
+  background: gray;
+  display: inline-block;
+  border-radius: 50%;
+}
+
+.active {
+  background: #ff385c;
+}
+
+/* ABOUT */
+.about {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+/* STATS */
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px 20px;
+}
+
+.chart-box {
+  width: 280px;
+  max-width: 90%;
+  background: white;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+/* CIRCLE */
+.circle {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.circle span {
+  background: white;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+/* BARS */
+.bars {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 8px;
+  height: 100px;
+}
+
+.bar {
+  width: 20px;
+  background: #ff385c;
+  border-radius: 6px;
+}
+
+/* ABOUT ME */
+.about-me {
+  padding: 50px 20px;
+  background: white;
+}
+
+.about-container {
+  max-width: 1000px;
+  margin: auto;
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.about-img img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.about-content {
+  flex: 1;
+  min-width: 250px;
+}
+
+.about-content p {
+  color: #555;
+}
+
+/* SOCIAL */
+.social-links a {
+  margin-right: 10px;
+  font-size: 20px;
+  color: #333;
+  transition: 0.3s;
+}
+
+.social-links a:hover {
+  color: #ff385c;
+}
+
+/* BUTTON */
+.portfolio-btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 8px 18px;
+  background: #ff385c;
+  color: white;
+  text-decoration: none;
+  border-radius: 25px;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.portfolio-btn:hover {
+  background: #e03150;
+  transform: translateY(-2px);
+}
+
+/* 🔥 RESPONSIVE BREAKPOINTS */
+
+/* TABLET */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .listing-card img {
+    height: 200px;
+  }
+
+  .about-container {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+  .hero {
+    height: 60vh;
+  }
+
+  .hero h1 {
+    font-size: 1.6rem;
+  }
+
+  .categories {
+    gap: 10px;
+  }
+
+  .category-card {
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+
+  .prev, .next {
+    padding: 8px;
+  }
+
+  .bar {
+    width: 15px;
+  }
+}

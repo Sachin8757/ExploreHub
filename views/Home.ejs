@@ -1,12 +1,163 @@
-<!-- This is out Home page file and in this file we write our all function of home file -->
-
-
 <% layout('./layout/boilerplate.ejs') -%>
+<link rel="stylesheet" href="/stylesheets/Home.css">
 <body>
-    <div class="main">
-        <%if(CURRUSER){%>
-            
-            <h4><%=CURRUSER.name%></h4>
-        <%}%>
+<!-- HERO -->
+<section class="hero" id="hero">
+  <h1>Discover Amazing Places</h1>
+  <p>ExploreHub helps you discover and share amazing places.</p>
+</section>
+
+<!-- CATEGORIES -->
+<section class="categories">
+  <div class="category-card">🏖️ Beaches</div>
+  <div class="category-card">⛰️ Mountains</div>
+  <div class="category-card">🌆 Cities</div>
+</section>
+
+<!-- SLIDER -->
+<div class="slider">
+  <div class="slides" id="slides">
+    <% listings.forEach(l => { %>
+    <div class="slide">
+      <div class="listing-card">
+        <img src="<%= l.image %>" />
+        <div class="listing-info">
+          <h3><%= l.title %></h3>
+        </div>
+      </div>
     </div>
+    <% }) %>
+  </div>
+
+  <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+  <button class="next" onclick="moveSlide(1)">&#10095;</button>
+</div>
+
+<div class="dots" id="dots"></div>
+
+<!-- ABOUT -->
+<section class="about">
+  <h2>About ExploreHub</h2>
+  <p>Your platform to explore, book and list amazing places.</p>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+
+  <!-- Listings -->
+  <div class="chart-box">
+    <h3>Total Listings</h3>
+
+    <div class="circle" style="
+      background: conic-gradient(
+        #ff385c 0% <%= chartData.listingPercent %>%,
+        #ddd <%= chartData.listingPercent %>% 100%
+      );
+    ">
+      <span><%= chartData.totalListings %></span>
+    </div>
+
+    <p><%= chartData.totalListings %> Listings</p>
+  </div>
+
+  <!-- Users -->
+  <div class="chart-box">
+    <h3>Users Growth</h3>
+
+    <div class="bars">
+      <% chartData.userGrowth.forEach(u => { %>
+        <div class="bar" style="height:<%= u %>px; opacity:<%= u / 120 %>"></div>
+      <% }) %>
+    </div>
+
+    <p>Total Users: <%= chartData.totalUsers %></p>
+  </div>
+
+</section>
+
+<!-- ABOUT CREATOR -->
+<section class="about-me">
+  <div class="about-container">
+
+    <!-- LEFT (IMAGE) -->
+    <div class="about-img">
+      <img src="/images/111.jpg" alt="Creator">
+    </div>
+
+    <!-- RIGHT (CONTENT) -->
+    <div class="about-content">
+      <h2>About Me</h2>
+      <p>
+        Hi, I'm <b>Sachin Kumar</b>, the creator of <b>ExploreHub</b>.  
+        I built this platform to help people discover amazing places, 
+        share experiences, and explore the world in a simple way.
+      </p>
+
+      <p>
+        This project is built using <b>Node.js, Express, MongoDB, and EJS</b>.  
+        My goal is to become a full-stack developer and build real-world applications.
+      </p>
+    <a href="https://sachin-o8w0.onrender.com" target="_blank" class="portfolio-btn">
+        My Portfolio 🚀
+    </a>
+      <div class="social-links">
+      <a href="https://github.com/Sachin8757"><i class="fa-brands fa-github"></i></a>
+      <a href="https://x.com/SachinKuma41150"><i class="fa-brands fa-x-twitter"></i></a>
+      <a href="https://www.instagram.com/_alex.sachin_?igsh=MWFvdnhyMDRycnRzMA=="><i class="fa-brands fa-square-instagram"></i></a>
+      <a href="https://www.linkedin.com/in/sachin-kumar-187865302?utm_source=share_via&utm_content=profile&utm_medium=member_android"><i class="fa-brands fa-linkedin"></i></a>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+/* HERO BG */
+const hero = document.getElementById('hero');
+const heroImages = <%- JSON.stringify(listings.map(l => l.image)) %>;
+let heroIndex = 0;
+
+function changeHeroBg() {
+  if (heroImages.length === 0) return;
+  hero.style.backgroundImage = `url(${heroImages[heroIndex]})`;
+  heroIndex = (heroIndex + 1) % heroImages.length;
+}
+
+changeHeroBg();
+setInterval(changeHeroBg, 3000);
+
+/* SLIDER */
+let index = 0;
+const slides = document.getElementById('slides');
+const totalSlides = slides.children.length;
+const dotsContainer = document.getElementById('dots');
+
+for (let i = 0; i < totalSlides; i++) {
+  let dot = document.createElement('span');
+  dot.classList.add('dot');
+  dot.onclick = () => showSlide(i);
+  dotsContainer.appendChild(dot);
+}
+
+function updateDots() {
+  document.querySelectorAll('.dot').forEach(d => d.classList.remove('active'));
+  if (dotsContainer.children[index]) dotsContainer.children[index].classList.add('active');
+}
+
+function showSlide(i) {
+  index = i;
+  slides.style.transform = `translateX(-${index * 100}%)`;
+  updateDots();
+}
+
+function moveSlide(step) {
+  index = (index + step + totalSlides) % totalSlides;
+  showSlide(index);
+}
+
+setInterval(() => moveSlide(1), 3000);
+updateDots();
+</script>
+
 </body>

@@ -7,10 +7,11 @@ const connection=require('./models/connection.js')
 const PORT=process.env.PORT; //this is the port number where our project running
 const engine = require("ejs-mate"); //require ejs mate 
 const path=require('path') //require path
-const listing=require('./routes/listing.js');//require listing.js file from routes folder
+const lis=require('./routes/listing.js');//require listing.js file from routes folder
 const authentication=require('./routes/authentication.js'); // require authentication.js file from routes folder
 const review=require('./routes/review.js'); // require review.js file from routes folder
 const User=require("./models/user.js")
+const Listing=require("./models/listing.js"); //require listing schema from models/listing.js
 //this is some authentication requirement 
 const MongoStore = require("connect-mongo").default;
 const session = require("express-session");
@@ -51,14 +52,40 @@ app.use(async (req, res, next) => {
 });
 
 
-app.use('/',listing)//call all function of listing files
+app.use('/',lis)//call all function of listing files
 app.use('/',authentication)//call all function of authentication files
 app.use('/',review)//call all function of review  files
 
-app.get("/",async(req,res)=>{
-    // res.render("Home.ejs"); //this is Home route
-    res.redirect("/listing") 
-})
+app.get("/", async (req, res) => {
+  const listings = await Listing.find();
+
+  const totalListings = listings.length;
+  const totalUsers =(await User.find()).length;
+
+  const userGrowth = [30, 60, 90, 120];
+  const listingPercent = Math.min((totalListings / 100) * 100, 100);
+
+      res.render("Home.ejs", {
+        listings,
+        chartData: {
+          totalListings,
+          totalUsers,
+          userGrowth,
+          listingPercent
+        }
+      });
+});
+
+
+
+
+
+
+
+
+
+
+
 
 app.listen(PORT,(req,res)=>{ // this is function which help to run our server on port
     console.log(`server running on port No ${PORT}...`); //this line print our server runnign now on console
