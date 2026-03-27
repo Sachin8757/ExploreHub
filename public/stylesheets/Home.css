@@ -258,6 +258,52 @@ body {
 
 /* 🔥 RESPONSIVE BREAKPOINTS */
 
+
+
+/* MOBILE */
+
+
+
+.hero {
+  position: relative;
+  height: 70vh;
+  width: 90%;
+  margin: 20px auto;
+  border-radius: 20px;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+/* dark overlay */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  border-radius: 20px;
+}
+
+/* TEXT POSITION FIX */
+.hero-overlay {
+  position: absolute;
+  bottom: 20px;   /* 👈 bottom */
+  left: 20px;     /* 👈 left */
+  color: white;
+  z-index: 2;
+  text-align: left;
+}
+
+.hero-overlay h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.hero-overlay p {
+  margin-top: 5px;
+  font-size: 1.1rem;
+}
+
 /* TABLET */
 @media (max-width: 768px) {
   .hero h1 {
@@ -278,10 +324,9 @@ body {
   }
 }
 
-/* MOBILE */
 @media (max-width: 480px) {
   .hero {
-    height: 60vh;
+    height: 40vh;
   }
 
   .hero h1 {

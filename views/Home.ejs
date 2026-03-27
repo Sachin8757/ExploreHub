@@ -1,21 +1,25 @@
 <% layout('./layout/boilerplate.ejs') -%>
 <link rel="stylesheet" href="/stylesheets/Home.css">
+
 <body>
-<!-- HERO -->
+
+<!-- HERO (UPDATED) -->
 <section class="hero" id="hero">
-  <h1>Discover Amazing Places</h1>
-  <p>ExploreHub helps you discover and share amazing places.</p>
+  <div class="hero-overlay">
+    <h1 id="hero-title"></h1>
+    <p id="hero-place"></p>
+  </div>
 </section>
 
 <!-- CATEGORIES -->
-<section class="categories">
+<!-- <section class="categories">
   <div class="category-card">🏖️ Beaches</div>
   <div class="category-card">⛰️ Mountains</div>
   <div class="category-card">🌆 Cities</div>
-</section>
+</section> -->
 
 <!-- SLIDER -->
-<div class="slider">
+<!-- <div class="slide" data-id="<%= listings._id %>">
   <div class="slides" id="slides">
     <% listings.forEach(l => { %>
     <div class="slide">
@@ -31,7 +35,7 @@
 
   <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
   <button class="next" onclick="moveSlide(1)">&#10095;</button>
-</div>
+</div> -->
 
 <div class="dots" id="dots"></div>
 
@@ -79,12 +83,12 @@
 <section class="about-me">
   <div class="about-container">
 
-    <!-- LEFT (IMAGE) -->
+    <!-- LEFT -->
     <div class="about-img">
       <img src="/images/111.jpg" alt="Creator">
     </div>
 
-    <!-- RIGHT (CONTENT) -->
+    <!-- RIGHT -->
     <div class="about-content">
       <h2>About Me</h2>
       <p>
@@ -97,15 +101,16 @@
         This project is built using <b>Node.js, Express, MongoDB, and EJS</b>.  
         My goal is to become a full-stack developer and build real-world applications.
       </p>
-    <a href="https://sachin-o8w0.onrender.com" target="_blank" class="portfolio-btn">
-        My Portfolio 🚀
-    </a>
-      <div class="social-links">
-      <a href="https://github.com/Sachin8757"><i class="fa-brands fa-github"></i></a>
-      <a href="https://x.com/SachinKuma41150"><i class="fa-brands fa-x-twitter"></i></a>
-      <a href="https://www.instagram.com/_alex.sachin_?igsh=MWFvdnhyMDRycnRzMA=="><i class="fa-brands fa-square-instagram"></i></a>
-      <a href="https://www.linkedin.com/in/sachin-kumar-187865302?utm_source=share_via&utm_content=profile&utm_medium=member_android"><i class="fa-brands fa-linkedin"></i></a>
 
+      <a href="https://sachin-o8w0.onrender.com" target="_blank" class="portfolio-btn">
+        My Portfolio 🚀
+      </a>
+
+      <div class="social-links">
+        <a href="https://github.com/Sachin8757"><i class="fa-brands fa-github"></i></a>
+        <a href="https://x.com/SachinKuma41150"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="https://www.instagram.com/_alex.sachin_"><i class="fa-brands fa-square-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/sachin-kumar-187865302"><i class="fa-brands fa-linkedin"></i></a>
       </div>
     </div>
 
@@ -113,25 +118,53 @@
 </section>
 
 <script>
-/* HERO BG */
+/* HERO (UPDATED + CLICKABLE) */
 const hero = document.getElementById('hero');
-const heroImages = <%- JSON.stringify(listings.map(l => l.image)) %>;
+const listingsData = <%- JSON.stringify(listings) %>;
+
 let heroIndex = 0;
 
 function changeHeroBg() {
-  if (heroImages.length === 0) return;
-  hero.style.backgroundImage = `url(${heroImages[heroIndex]})`;
-  heroIndex = (heroIndex + 1) % heroImages.length;
+  if (listingsData.length === 0) return;
+
+  const item = listingsData[heroIndex];
+
+  hero.style.backgroundImage = `url(${item.image})`;
+
+  document.getElementById("hero-title").innerText = item.title;
+  document.getElementById("hero-place").innerText = item.location || "Amazing Place";
+
+  heroIndex = (heroIndex + 1) % listingsData.length;
 }
 
 changeHeroBg();
 setInterval(changeHeroBg, 3000);
 
-/* SLIDER */
+/* HERO CLICK */
+hero.addEventListener("click", () => {
+  if (listingsData.length === 0) return;
+
+  const currentItem = listingsData[(heroIndex - 1 + listingsData.length) % listingsData.length];
+  window.location.href = `/listing/details/${currentItem._id}`;
+});
+
+
+/* SLIDER (UPDATED CLICKABLE) */
 let index = 0;
 const slides = document.getElementById('slides');
 const totalSlides = slides.children.length;
 const dotsContainer = document.getElementById('dots');
+
+/* 👉 CLICK EACH SLIDE */
+Array.from(slides.children).forEach(slide => {
+  slide.style.cursor = "pointer"; // pointer
+  slide.addEventListener("click", () => {
+    const id = slide.getAttribute("data-id");
+    if (id) {
+      window.location.href = `/listing/${id}`;
+    }
+  });
+});
 
 for (let i = 0; i < totalSlides; i++) {
   let dot = document.createElement('span');
