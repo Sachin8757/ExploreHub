@@ -208,10 +208,85 @@ app.get("/listing/login/login/forget", async (req, res) => {
         // user.resetOTP = otp;
         // user.otpExpiry = Date.now() + 5 * 60 * 1000;
 
-        res.render("forget.ejs")
+        const user = await User.findOne({ email });
+
+            if (!user) {
+                return res.send("User not found");
+            }
+
+            user.otp = otp;
+            user.otpExpiry = Date.now() + 5 * 60 * 1000; // 5 minutes
+
+            await user.save();
+
+
+        res.render("forget.ejs", {email}
+        );
     } catch (err) {
         res.status(500).send("Failed to send OTP");
     }
+});
+
+
+app.post("/listing/login/login/forget", async (req, res) => {
+
+    try {
+
+        const {
+            email,
+            otp,
+            password,
+            confirmPassword
+        } = req.body;
+
+        // Check all fields
+        if (!email || !otp || !password || !confirmPassword) {
+            return res.send("All fields are required");
+        }
+
+        // Password match
+        if (password !== confirmPassword) {
+            return res.send("Passwords do not match");
+        }
+
+        // Find user
+        const user = await User.findOne({ email });
+
+        if (!user) {
+            return res.send("User not found");
+        }
+
+        // OTP check
+        if (user.otp !== otp) {
+            return res.send("Invalid OTP");
+        }
+
+        // OTP expiry check
+        if (user.otpExpiry < Date.now()) {
+            return res.send("OTP has expired");
+        }
+
+        // Hash password
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        // Update password
+        user.password = hashedPassword;
+
+        // Clear OTP
+        user.otp = undefined;
+        user.otpExpiry = undefined;
+
+        await user.save();
+
+        res.redirect("/listing/login");
+
+    } catch (err) {
+
+        console.log(err);
+        res.status(500).send("Something went wrong");
+
+    }
+
 });
 
 

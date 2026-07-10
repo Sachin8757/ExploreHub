@@ -8,7 +8,7 @@ const Review=require("../models/review.js")
 
 
 // All listing
-app.get("/listing",isLogin,async(req,res)=>{
+app.get("/listing",async(req,res)=>{
     const lis = await Listing.find().populate("reviews");   // get data from MongoDB
     res.render("index.ejs", { lis});
 })
@@ -30,6 +30,78 @@ app.post("/listing/new",isLogin,upload.single("image"),async(req, res) => {
     })
     newlisting.save();
     res.redirect("/listing")
+});
+
+// About Page
+app.get("/about",async(req,res)=>{
+  const listings = await Listing.find();
+
+  const totalListings = listings.length;
+  const totalUsers =(await User.find()).length;
+
+  const userGrowth = [30, 60, 90, 120];
+  const listingPercent = Math.min((totalListings / 100) * 100, 100);
+
+      res.render("about.ejs", {
+        listings,
+        chartData: {
+          totalListings,
+          totalUsers,
+          userGrowth,
+          listingPercent
+        }
+      });
+})
+// New Route
+app.get("/edit/:id",isLogin,async(req,res)=>{
+    const { id } = req.params;
+    const listing = await Listing.findById(id);
+    if(!listing){
+        res.send("Place not found")
+    }
+    console.log(listing);
+    res.render("edit.ejs",{listing})
+})
+app.post("/listing/edit/:id", isLogin, upload.single("image"), async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { title, location, state, country } = req.body;
+
+        const listing = await Listing.findById(id);
+
+        if (!listing) {
+            return res.status(404).send("Listing not found");
+        }
+
+        // Update only if the user entered a value
+        if (title && title.trim() !== "") {
+            listing.title = title;
+        }
+
+        if (location && location.trim() !== "") {
+            listing.location = location;
+        }
+
+        if (state && state.trim() !== "") {
+            listing.state = state;
+        }
+
+        if (country && country.trim() !== "") {
+            listing.country = country;
+        }
+
+        // Update image only if a new image is uploaded
+        if (req.file) {
+            listing.image = req.file.path;
+        }
+
+        await listing.save();
+
+        res.redirect(`/listing/details/${id}`);
+    } catch (err) {
+        console.log(err);
+        res.status(500).send("Something went wrong");
+    }
 });
 // this is calculate time 
 function timeAgo(date) {

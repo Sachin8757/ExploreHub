@@ -27,6 +27,9 @@
       <%if(CURRUSER.id==listing.User._id){%>
        <a href="/delete/<%= listing._id %>" class="viewbu">Delete</a>
       <%}%>
+      <%if(CURRUSER.id==listing.User._id){%>
+       <a href="/edit/<%= listing._id %>" class="viewbu">Edit</a>
+      <%}%>
     </div>
   </div>
 

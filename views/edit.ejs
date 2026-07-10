@@ -1,0 +1,46 @@
+<% layout("/layout/boilerplate") %>
+
+<div class="row mt-4">
+  <div class="col-8 offset-2">
+    <h2 class="mb-4"><%=listing.title%></h2>
+
+    <form action="/listing/edit/<%=listing._id%>" method="POST" enctype="multipart/form-data">
+
+      <!-- Title -->
+      <div class="mb-3">
+        <label class="form-label">Title</label>
+        <input type="text" name="title" class="form-control" placeholder="<%=listing.title%>" >
+        <div class="invalid-feedback">Please enter title</div>
+      </div>
+      <!-- Image -->
+      <div class="mb-3">
+        <label class="form-label">Upload Image</label>
+        <input type="file" name="image" class="form-control">
+      </div>
+
+      <!-- Country & District -->
+      <div class="row">
+        <div class="mb-3 col-md-6">
+          <label class="form-label">Country</label>
+          <input type="text" name="country" class="form-control" placeholder="<%=listing.country%>" >
+          <div class="invalid-feedback">Enter country</div>
+        </div>
+
+        <div class="mb-3 col-md-6">
+          <label class="form-label">State</label>
+          <input type="text" name="state" class="form-control" placeholder="<%=listing.state%>" >
+          <div class="invalid-feedback">Enter State</div>
+        </div>
+      </div>
+
+      <!-- Location -->
+      <div class="mb-3">
+        <label class="form-label">Location</label>
+        <input type="text" name="location" class="form-control" placeholder="<%=listing.location%>" >
+        <div class="invalid-feedback">Enter location</div>
+      </div>
+
+      <button class="btn btn-dark">Edit Place</button>
+    </form>
+  </div>
+</div>

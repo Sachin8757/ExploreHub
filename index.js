@@ -57,23 +57,8 @@ app.use('/',authentication)//call all function of authentication files
 app.use('/',review)//call all function of review  files
 
 app.get("/", async (req, res) => {
-  const listings = await Listing.find();
 
-  const totalListings = listings.length;
-  const totalUsers =(await User.find()).length;
-
-  const userGrowth = [30, 60, 90, 120];
-  const listingPercent = Math.min((totalListings / 100) * 100, 100);
-
-      res.render("Home.ejs", {
-        listings,
-        chartData: {
-          totalListings,
-          totalUsers,
-          userGrowth,
-          listingPercent
-        }
-      });
+  res.redirect("/listing")
 });
 
 

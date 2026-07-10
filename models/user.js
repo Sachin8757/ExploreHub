@@ -3,6 +3,8 @@ const userschema=new mongoose.Schema({
     name:String,
     email:String,
     password:String,
+    otp: String,
+    otpExpiry: Date,
     listing:[
         {
       type: mongoose.Schema.Types.ObjectId,
