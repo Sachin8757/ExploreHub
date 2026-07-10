@@ -9,28 +9,32 @@
       <span>→</span>
     </div>
 
-    <h2>Sign in with Phone</h2>
+    <h2>Sign in with email</h2>
     <p class="subtitle">Access your account securely</p>
 
     <form action="/listing/login/login" method="post">
       
-      <!-- Phone Input -->
-      <div class="input-box">
-        <i class="fa-solid fa-phone"></i>
-        <input type="text" name="phone" placeholder="Phone" required>
-      </div>
+  <!-- email Input -->
+  <div class="input-box">
+    <i class="fa-solid fa-envelope"></i>
 
-      <!-- Password Input -->
-      <div class="input-box">
-        <i class="fa-solid fa-lock"></i>
-        <input type="password" name="password" placeholder="Password" required>
-        <i class="fa-solid fa-eye eye"></i>
-      </div>
+    <input type="text" id="email" name="email" placeholder="Email" required>
+  </div>
 
-      <div class="forgot">Forgot password?</div>
+  <!-- Password Input -->
+  <div class="input-box">
+    <i class="fa-solid fa-lock"></i>
+    <input type="password" name="password" placeholder="Password" required>
+    <i class="fa-solid fa-eye eye"></i>
+  </div>
 
-      <button class="btnn">Get Started</button>
-    </form>
+  <!-- Forgot Password -->
+  <div class="forgot">
+    <a href="#" onclick="goForget()">Forgot password?</a>
+  </div>
+
+  <button class="btnn">Get Started</button>
+</form>
 
   </div>
 </div>
@@ -49,4 +53,13 @@
       eye.classList.remove("fa-eye-slash");
     }
   });
+
+  function goForget() {
+  const email = document.getElementById("email").value;
+  if (email) {
+    window.location.href = "/listing/login/login/forget?email=" + email;
+  } else {
+    alert("Please enter your email number first!");
+  }
+}
 </script>

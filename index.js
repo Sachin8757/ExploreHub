@@ -79,14 +79,6 @@ app.get("/", async (req, res) => {
 
 
 
-
-
-
-
-
-
-
-
 app.listen(PORT,(req,res)=>{ // this is function which help to run our server on port
     console.log(`server running on port No ${PORT}...`); //this line print our server runnign now on console
 })

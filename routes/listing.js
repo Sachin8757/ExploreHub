@@ -5,6 +5,7 @@ const upload = require("../middleware/multer.js");
 const Listing=require("../models/listing.js")
 const User=require("../models/listing.js")
 const Review=require("../models/review.js")
+const listings=require("../routes/data.js")
 
 // All listing
 app.get("/listing",isLogin,async(req,res)=>{
@@ -126,4 +127,30 @@ app.post("/listing/:id",isLogin, async (req, res) => {
         res.redirect(`/listing/user/${id}`);
     }
 });
+
+app.get("/load", async (req, res) => {
+  try {
+    // Replace with an actual User _id from your database
+    const userId =  process.env.userurl;
+    
+    const finalListings = listings.map((listing) => ({
+      ...listing,
+      User: userId,
+    }));
+
+    await Listing.insertMany(finalListings);
+
+    res.send({
+      success: true,
+      message: `${finalListings.length} listings inserted successfully.`,
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send({
+      success: false,
+      message: err.message,
+    });
+  }
+});
+
 module.exports=app;
