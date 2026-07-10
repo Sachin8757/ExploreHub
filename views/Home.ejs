@@ -12,26 +12,11 @@
 </section>
 
 <!-- CATEGORIES -->
- <section class="categories">
+  <section class="categories">
   <div class="category-card">🏖️ Beaches</div>
   <div class="category-card">⛰️ Mountains</div>
   <div class="category-card">🌆 Cities</div>
-</section> -->
-
-<!-- SLIDER -->
-<div class="slide" data-id="<%= listings._id %>">
-  <div class="slides" id="slides">
-    <% listings.forEach(l => { %>
-    <div class="slide">
-      <div class="listing-card">
-        <img src="<%= l.image %>" />
-        <div class="listing-info">
-          <h3><%= l.title %></h3>
-        </div>
-      </div>
-    </div>
-    <% }) %>
-  </div>
+  </section>
 
   <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
   <button class="next" onclick="moveSlide(1)">&#10095;</button>
