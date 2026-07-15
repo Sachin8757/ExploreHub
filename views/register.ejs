@@ -4,48 +4,52 @@
 <div class="main">
   <div class="card">
 
-    <!-- Top Icon -->
-    <div class="icon-box">
-      <span>→</span>
-    </div>
+        <!-- Top Icon -->
+        <div class="icon-box">
+          <span>→</span>
+        </div>
 
-    <h2>Create Account</h2>
-    <p class="subtitle">Join us and start your journey 🚀</p>
+        <h2>Create Account</h2>
+        <p class="subtitle">Join us and start your journey 🚀</p>
 
-<form action="/listing/register/register" method="post" id="registerForm">
+    <form action="/listing/register/register" method="post" id="registerForm">
 
-  <!-- Name -->
-  <div class="input-box">
-    <i class="fa-solid fa-user"></i>
-    <input type="text" name="name" placeholder="Full Name" required>
-  </div>
+        <!-- Name -->
+        <div class="input-box">
+          <i class="fa-solid fa-user"></i>
+          <input type="text" name="name" placeholder="Full Name" required>
+        </div>
 
-  <!-- Phone -->
-  <div class="input-box">
-    <i class="fa-solid fa-envelope"></i>
-    <input type="text" name="email" placeholder="Email" required>
-  </div>
+        <!-- Phone -->
+        <div class="input-box">
+          <i class="fa-solid fa-envelope"></i>
+          <input type="text" name="email" placeholder="Email" required>
+        </div>
 
-  <!-- Password -->
-  <div class="input-box">
-    <i class="fa-solid fa-lock"></i>
-    <input type="password" id="password" name="password" placeholder="Password" required>
-    <i class="fa-solid fa-eye eye"></i>
-  </div>
+        <!-- Password -->
+        <div class="input-box">
+          <i class="fa-solid fa-lock"></i>
+          <input type="password" id="password" name="password" placeholder="Password" required>
+          <i class="fa-solid fa-eye eye"></i>
+        </div>
 
-  <!-- Confirm Password -->
-  <div class="input-box">
-    <i class="fa-solid fa-lock"></i>
-    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
-  </div>
+        <!-- Confirm Password -->
+        <div class="input-box">
+          <i class="fa-solid fa-lock"></i>
+          <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
+        </div>
 
-  <!-- Error Message -->
-  <p id="error-msg" style="color:red; font-size:12px; display:none;">
-    Passwords do not match ❌
-  </p>
+        <!-- Error Message -->
+        <p id="error-msg" style="color:red; font-size:12px; display:none;">
+          Passwords do not match ❌
+        </p>
+        <div class="forget">
 
-  <button class="btnn">Register</button>
-</form>
+          <a href="/listing/login">Already have an account?</a>
+        </div>
+
+        <button class="btnn">Register</button>
+      </form>
 
   </div>
 </div>

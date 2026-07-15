@@ -1,149 +1,131 @@
-/* Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
-body {
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #c3ecf7, #f5f7fa);
-}
 
-.bottom-text {
-  margin-top: 15px;
-  font-size: 13px;
-}
-
-.bottom-text a {
-  color: black;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-/* Main container */
+/* Main Container */
 .main {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px; /* important for mobile */
+  width: 100%;
+  max-width: 420px;
+  padding: 20px;
 }
 
 /* Card */
 .card {
-  width: 100%;
-  max-width: 350px;  /* desktop limit */
-  padding: 25px;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(15px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  background: #fff;
+  border-radius: 12px;
+  padding: 30px 25px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
   text-align: center;
 }
 
-/* Icon */
+/* Icon Box */
 .icon-box {
-  width: 55px;
-  height: 55px;
+  width: 50px;
+  height: 50px;
   margin: 0 auto 15px;
-  border-radius: 15px;
-  background: #eee;
+  background: #2575fc;
+  color: #fff;
+  font-size: 22px;
+  border-radius: 50%;
   display: flex;
-  align-items: center;
   justify-content: center;
-  font-size: 20px;
+  align-items: center;
 }
 
-/* Text */
-h2 {
+/* Headings */
+.card h2 {
   font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #333;
 }
 
 .subtitle {
-  font-size: 13px;
-  color: gray;
+  font-size: 14px;
+  color: #666;
   margin-bottom: 20px;
 }
 
-/* Inputs */
+/* Input Box */
 .input-box {
-  display: flex;
-  align-items: center;
-  background: #eee;
-  padding: 10px;
-  border-radius: 10px;
-  margin-bottom: 15px;
+  position: relative;
+  margin-bottom: 18px;
 }
 
 .input-box i {
-  margin-right: 10px;
-  color: gray;
-  font-size: 14px;
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  color: #888;
 }
 
 .input-box input {
-  border: none;
-  outline: none;
-  background: transparent;
   width: 100%;
+  padding: 12px 40px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
   font-size: 14px;
+  transition: border-color 0.3s;
 }
 
-/* Forgot */
-.forgot {
-  text-align: right;
-  font-size: 12px;
-  margin-bottom: 15px;
+.input-box input:focus {
+  border-color: #2575fc;
+}
+
+/* Eye Icon */
+.eye {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #888;
+}
+
+/* Error Message */
+#error-msg {
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+/* Links */
+.forget {
+  margin: 15px 0;
+}
+
+.forget a {
+  font-size: 13px;
+  color: #2575fc;
+  text-decoration: none;
+}
+
+.forget a:hover {
+  text-decoration: underline;
 }
 
 /* Button */
 .btnn {
   width: 100%;
   padding: 12px;
-  border-radius: 12px;
+  background: #2575fc;
   border: none;
-  background: linear-gradient(to right, #000, #333);
-  color: white;
+  border-radius: 8px;
+  color: #fff;
   font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
 }
 
-/* ------------------ 📱 MOBILE ------------------ */
+.btnn:hover {
+  background: #1a5edb;
+}
+
+
+
+/* Responsive */
 @media (max-width: 480px) {
   .card {
-    padding: 20px;
-    border-radius: 15px;
-  }
-
-  h2 {
-    font-size: 18px;
-  }
-
-  .subtitle {
-    font-size: 12px;
-  }
-
-  .input-box {
-    padding: 8px;
-  }
-
-  .btnn {
-    padding: 10px;
-    font-size: 14px;
-  }
-}
-
-/* ------------------ 📲 TABLET ------------------ */
-@media (min-width: 481px) and (max-width: 768px) {
-  .card {
-    max-width: 400px;
-  }
-}
-
-/* ------------------ 💻 LARGE SCREEN ------------------ */
-@media (min-width: 1024px) {
-  .card {
-    max-width: 380px;
-    padding: 30px;
+    padding: 20px 15px;
   }
 }

@@ -64,6 +64,11 @@
   font-size: 1.8rem;
   color: #ff385c; /* Airbnb red vibe */
 }
+.header{
+  color: #ff385c;
+  font-weight: bold;
+  display: none;
+}
 
 /* ------------------ 📱 MOBILE ------------------ */
 @media (max-width: 768px) {
@@ -93,6 +98,9 @@
   .nav-link {
     padding: 8px 0;
   }
+    .header{
+    display: block;
+  }
 }
 
 
@@ -105,11 +113,13 @@
   .search-btn {
     font-size: 14px;
   }
+
 }
 </style>
 <nav class="navbar navbar-expand-md bg-body-tertiary sticky-top boder-bottom">
     <div class="container-fluid">
       <a class="navbar-brand" href="/"> <i class="fa-solid fa-earth-americas"></i></a>
+      <h3 class="header">ExploreHub</h3>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>

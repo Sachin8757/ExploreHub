@@ -55,8 +55,6 @@ app.post("/listing/login/login", async (req, res) => {
     res.redirect('/')
 });
 
-
-
 //this is register part
 app.get('/listing/register',async(req,res)=>{
     res.render("register.ejs")
@@ -288,8 +286,5 @@ app.post("/listing/login/login/forget", async (req, res) => {
     }
 
 });
-
-
-
 
 module.exports=app;

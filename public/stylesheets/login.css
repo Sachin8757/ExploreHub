@@ -101,6 +101,42 @@ a{
   font-size: 15px;
 }
 
+
+
+
+
+
+
+
+
+
+.forgot {
+  margin-top: 10px;
+}
+
+.forgot a {
+  color: #007bff;       /* blue link */
+  text-decoration: none;
+  margin-right: 15px;   /* spacing between links */
+}
+
+.forgot a:hover {
+  text-decoration: underline;
+}
+
+.register-link {
+  font-weight: bold;
+  color: #28a745;       /* green for register */
+}
+
+
+
+
+
+
+
+
+
 /* ------------------ 📱 MOBILE ------------------ */
 @media (max-width: 480px) {
   .card {
